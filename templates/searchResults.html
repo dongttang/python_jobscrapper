@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Scraper</title>
+    <title>Job Scraper</title>
+    <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet">
 </head>
 <body>
-    
+    {%for site in scraped_site_list%}
+        {%for job_cards in site["result"]%}
+            <div>
+                <h3>{{job_cards["title"]|safe}}</h3>
+                <h4>{{job_cards["company_name"]|safe}}</h4>
+                <a href={{job_cards["url"]}}>go to apply</a>
+                <hr />
+            </div>
+        {%endfor%}
+    {%endfor%}
 </body>
 </html>
