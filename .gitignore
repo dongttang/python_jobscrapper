@@ -141,3 +141,4 @@ cython_debug/
 .DS_Store
 DUMMY_*
 TEST_*
+.vscode
