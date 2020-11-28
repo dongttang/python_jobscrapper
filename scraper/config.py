@@ -1,10 +1,15 @@
-# To add an additional scrapper, import this file.
 from bs4 import BeautifulSoup
 import requests
 
 HEADER = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36"
 }
+
+REGISTERED_SCRAPPER = [
+    "stack_overflow",
+    "remote_ok",
+    "we_work_remotely",
+]
 
 job_card_template = {
     "title": str,
