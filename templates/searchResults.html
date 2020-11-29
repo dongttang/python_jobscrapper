@@ -7,15 +7,31 @@
     <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet">
 </head>
 <body>
+
+    <header>
+        <h1>Remote Jobs</h1>
+    
+        <h2>Found {{job_amount}} {{scraped_site_list[0]["keyword"]}} jobs from the sites</h2>
+        <span><strong>| </strong></span>
+        {%for site in scraped_site_list%}
+        <span><strong>{{site["site"].replace("_"," ").capitalize()}} | </strong></span>
+        {%endfor%}
+
+        <h3><a href="/export?keyword={{scraped_site_list[0]["keyword"]}}">Export to CSV</a></h3>
+        <h4><a href="/">← Go back</a></h4>
+
+    </header>
+    <main>
     {%for site in scraped_site_list%}
         {%for job_cards in site["result"]%}
             <div>
                 <h3>{{job_cards["title"]|safe}}</h3>
                 <h4>{{job_cards["company_name"]|safe}}</h4>
-                <a href={{job_cards["url"]}}>go to apply</a>
+                <a href={{job_cards["url"]}} target="_blank">go to apply</a>
                 <hr />
             </div>
         {%endfor%}
     {%endfor%}
+    </main>
 </body>
 </html>
